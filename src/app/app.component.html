@@ -1,0 +1,36 @@
+
+<div *ngIf="show">
+<span>Enter Name</span><input type="search" placeholder="Search" (keyup)='getSearchVal($event)' >
+<Button (click)="refresh()">Refresh</Button>
+<table >
+    <tr>
+        <th>Id
+            <i (click)="forwardIdSort()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+              </svg></i><i (click)="reverseIdSort()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+              </svg></i>
+        </th>
+        <th>Name  <i (click)="aTozSort()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+          </svg></i><i (click)="zToaSort()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+          </svg></i>
+        </th>
+        <th>Email</th>
+        <th>Images</th>
+        <th>View</th>
+    </tr>
+    <tr *ngFor="let user of userdatas">
+        <td>{{user.id}}</td>
+        <td>{{user.first_name}} {{user.last_name}}</td>
+        <td>{{user.email}}</td>
+        <td><img src="{{user.avatar}}" alt="sorry"></td>
+        <button  (click)="viewuser(user)" >View</button>
+    </tr>
+    <button (click)="pre()">Previous</button>
+    <button (click)="next()">Next</button>
+</table>
+</div>
+<!-- <h1>{{person.first_name}}</h1> -->
+<app-viewuser *ngIf="!show" [userdata]="person" (show)="show=true"  ></app-viewuser>
